@@ -12,7 +12,7 @@ namespace DOOMModLoader
     {
         static void PrintUsage()
         {
-            Console.WriteLine("Usage: DOOMModLoader.exe [-mp/-snap] [-vulkan] [-moddir <pathToModsFolder>]");
+            Console.WriteLine("Usage: mono DOOMModLoader.exe [-mp/-snap] [-vulkan] [-moddir <pathToModsFolder>]");
             Console.WriteLine();
             Console.WriteLine("  -mp\t\t\tLoad MP gamemode");
             Console.WriteLine("  -snap\t\t\tLoad SnapMap gamemode");
