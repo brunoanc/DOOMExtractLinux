@@ -224,7 +224,7 @@ namespace DOOMModLoader
             Directory.Delete(extractedPath, true);
 
             Console.WriteLine("Launching game!");
-            Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1");
+            Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1"); //Launches game through Steam
         }
 
         static void PressKeyPrompt()
