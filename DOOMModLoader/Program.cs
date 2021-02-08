@@ -224,7 +224,14 @@ namespace DOOMModLoader
             Directory.Delete(extractedPath, true);
 
             Console.WriteLine("Launching game!");
-            Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1 +render_API {renderAPI}"); //Launches game through Steam
+            if (renderAPI == "1")
+            {
+                Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1 +render_API 1"); //Launches game normally
+            }
+            else
+            {
+                Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1"); //Launches Vulkan game
+            }
         }
 
         static void PressKeyPrompt()
