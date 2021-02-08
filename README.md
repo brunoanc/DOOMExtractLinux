@@ -1,10 +1,10 @@
 # DOOMExtract
 
-A C# command-line tool for extracting DOOM 2016 resources.
+A C# command-line tool for extracting DOOM 2016 resources, modified to work natively on Linux using Mono.
 
-Compiled releases can be found [here](https://github.com/emoose/DOOMExtract/releases).
+Compiled releases can be found [here](https://github.com/PowerBall253/DOOMExtractLinux/releases).
 
-If you have any issues please make a report on the [issues page](https://github.com/emoose/DOOMExtract/issues).
+If you have any issues please make a report on the [issues page](https://github.com/PowerBall253/DOOMExtractLinux/issues).
 
 ## DOOMModLoader
 
