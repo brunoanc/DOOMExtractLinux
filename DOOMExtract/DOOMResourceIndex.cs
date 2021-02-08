@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -131,7 +131,7 @@ namespace DOOMExtract
                 if (folder == baseFolder && Path.GetFileName(file).ToLower() == "fileids.txt")
                     continue; // don't want to add fileIds.txt from base
 
-                var filePath = Path.GetFullPath(file).Substring(Path.GetFullPath(baseFolder).Length).Replace("\\", "/");
+                var filePath = Path.GetFullPath(file).Substring(Path.GetFullPath(baseFolder).Length);
                 var fileEntry = new DOOMResourceEntry(this);
 
                 fileEntry.PatchFileNumber = PatchFileNumber;
@@ -181,9 +181,8 @@ namespace DOOMExtract
 
             if (!String.IsNullOrEmpty(replaceFromFolder))
             {
-                replaceFromFolder = replaceFromFolder.Replace("/", "\\");
-                if (!replaceFromFolder.EndsWith("\\"))
-                    replaceFromFolder += "\\";
+                if (!replaceFromFolder.EndsWith("/"))
+                    replaceFromFolder += "/";
             }
 
             var destResources = new EndianIO(destResourceFile, FileMode.CreateNew);
@@ -270,7 +269,7 @@ namespace DOOMExtract
 
                     var file = Entries.Find(s => s.GetFullName() == fileName);
                     if (file == null)
-                        file = Entries.Find(s => s.GetFullName().Replace("\\", "/") == fileName);
+                        file = Entries.Find(s => s.GetFullName() == fileName);
 
                     if (file != null)
                         file.ID = id;
