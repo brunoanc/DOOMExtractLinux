@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -22,9 +22,9 @@ namespace DOOMExtract
             Console.WriteLine("  Files that don't already exist in the resources will be added.");
             Console.WriteLine("  To set a new files fileType append the fileType to its filename.");
             Console.WriteLine("  eg. allowoverlays.decl;renderParm for fileType \"renderParm\"");
-            Console.WriteLine("  To set/change a files ID, add a line for it in [repackFolder]\\filesIds.txt");
+            Console.WriteLine("  To set/change a files ID, add a line for it in [repackFolder]/filesIds.txt");
             Console.WriteLine("  of the format [full file path]=[file id]");
-            Console.WriteLine("  eg. \"example\\test.txt=1337\"");
+            Console.WriteLine("  eg. \"example/test.txt=1337\"");
             Console.WriteLine("  (Note that you should only rebuild the latest patch index file,");
             Console.WriteLine("  as patches rely on the data in earlier files!)");
             Console.WriteLine();
@@ -186,7 +186,7 @@ namespace DOOMExtract
                 int deleted = 0;
                 for(int i = 2; i < args.Length; i++)
                 {
-                    var path = args[i].Replace("/", "\\").ToLower();
+                    var path = args[i].ToLower();
 
                     int delIdx = -1;
                     for(int j = 0; j < index.Entries.Count; j++)
