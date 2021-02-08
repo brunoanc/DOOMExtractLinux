@@ -26,9 +26,9 @@ namespace DOOMModLoader
             string gameMode = "1";
             string resourcePrefix = "";
             string modDir = "mods";
-            string exeName = "DOOMx64.exe";
+            string renderAPI = "0";
 
-            Console.WriteLine("DOOMModLoader 0.2 by infogram - https://github.com/emoose/DOOMExtract");
+            Console.WriteLine("DOOMModLoaderLinux by infogram and PowerBall253 - https://github.com/PowerBall253/DOOMExtractLinux");
             Console.WriteLine();
 
             for (int i = 0; i < args.Length; i++)
@@ -53,7 +53,7 @@ namespace DOOMModLoader
                         break;
                     case "-vulkan":
                     case "/vulkan":
-                        exeName = "DOOMx64vk.exe";
+                        renderAPI = "1";
                         break;
                     case "-help":
                     case "/help":
@@ -62,9 +62,9 @@ namespace DOOMModLoader
                 }
             }
 
-            if (!File.Exists(exeName))
+            if (!File.Exists("DOOMx64.exe"))
             {
-                Console.WriteLine($"Error: failed to find {exeName} in current directory!");
+                Console.WriteLine("Error: failed to find DOOMx64.exe in current directory!");
                 PressKeyPrompt();
                 return;
             }
@@ -224,7 +224,7 @@ namespace DOOMModLoader
             Directory.Delete(extractedPath, true);
 
             Console.WriteLine("Launching game!");
-            Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1"); //Launches game through Steam
+            Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1 +render_API {renderAPI}"); //Launches game through Steam
         }
 
         static void PressKeyPrompt()
