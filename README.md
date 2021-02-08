@@ -1,4 +1,4 @@
-# DOOMExtract
+# DOOMExtractLinux
 
 A C# command-line tool for extracting DOOM 2016 resources, modified to work natively on Linux using Mono.
 
@@ -6,7 +6,7 @@ Compiled releases can be found [here](https://github.com/PowerBall253/DOOMExtrac
 
 If you have any issues please make a report on the [issues page](https://github.com/PowerBall253/DOOMExtractLinux/issues).
 
-## DOOMModLoader
+# DOOMModLoaderLinux
 
 DOOMModLoader is a simple program that allows you to load up a modified version of the game, without needing to bother with patch files/repacking.
 
