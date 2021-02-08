@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
@@ -86,7 +86,7 @@ namespace DOOMModLoader
             var modDirs = Directory.GetDirectories(modDir);
 
             var zips = new List<string>();
-            foreach(var file in modFiles)
+            foreach (var file in modFiles)
             {
                 hasMods = true;
 
@@ -143,7 +143,7 @@ namespace DOOMModLoader
                 File.WriteAllText(fileIdsPath, fileIds);
 
             // mod patch creation
-            var patchFilter = $"{resourcePrefix}gameresources_*.pindex";
+            var patchFilter = $"{resourcePrefix}gameresources*.pindex";
             var patches = Directory.GetFiles("base", patchFilter);
             var latestPatch = String.Empty;
             var latestPfi = 0;
@@ -153,11 +153,21 @@ namespace DOOMModLoader
                     continue; // patch is one made by us
 
                 var namesp = Path.GetFileNameWithoutExtension(patch).Split('_');
-                var pnum = int.Parse(namesp[namesp.Length - 1]);
-                if (pnum > latestPfi)
+                var NumberString = namesp[namesp.Length - 1];
+                var pnum = 0;
+                var NumberFound = int.TryParse(NumberString, out pnum);
+                if (!NumberFound)
                 {
                     latestPatch = patch;
-                    latestPfi = pnum;
+                    latestPfi = 1;
+                }
+                else
+                {
+                    if (pnum > latestPfi)
+                    {
+                        latestPatch = patch;
+                        latestPfi = pnum;
+                    }
                 }
             }
             if (string.IsNullOrEmpty(latestPatch))
@@ -177,10 +187,14 @@ namespace DOOMModLoader
 
             // delete existing custom patch
             if (File.Exists(destPath))
+            {
                 File.Delete(destPath);
-            
+            }
+
             if (File.Exists(resPath))
+            {
                 File.Delete(resPath);
+            }
 
             // if we have mods, create a custom patch out of them
             if (hasMods)
@@ -188,8 +202,8 @@ namespace DOOMModLoader
                 File.Copy(latestPatch, destPath);
 
                 Console.WriteLine($"Creating custom patch... (patch base: {Path.GetFileName(latestPatch)})");
-
                 index = new DOOMResourceIndex(destPath);
+
                 if (!index.Load())
                 {
                     Console.WriteLine("Failed to load custom patch " + destPath);
@@ -210,11 +224,7 @@ namespace DOOMModLoader
             Directory.Delete(extractedPath, true);
 
             Console.WriteLine("Launching game!");
-
-            var proc = new Process();
-            proc.StartInfo.FileName = exeName;
-            proc.StartInfo.Arguments = $"+com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1";
-            proc.Start();
+            Process.Start("steam", $"-applaunch 379720 +com_gameMode {gameMode} +com_restarted 1 +devMode_enable 1");
         }
 
         static void PressKeyPrompt()
