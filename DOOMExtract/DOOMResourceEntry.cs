@@ -1,4 +1,4 @@
-﻿using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
 using System.IO;
 
@@ -33,12 +33,12 @@ namespace DOOMExtract
         public string GetFullName()
         {
             if (!String.IsNullOrEmpty(FileName3))
-                return FileName3.Replace("/", "\\"); // convert to windows path
+                return FileName3;
 
             if (!String.IsNullOrEmpty(FileName2))
-                return FileName2.Replace("/", "\\"); // convert to windows path
+                return FileName2;
 
-            return FileType.Replace("/", "\\"); // convert to windows path
+            return FileType;
 
         }
         public void Read(EndianIO io)
