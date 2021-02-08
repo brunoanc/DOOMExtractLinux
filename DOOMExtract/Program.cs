@@ -11,13 +11,13 @@ namespace DOOMExtract
         static void PrintUsage()
         {
             Console.WriteLine("Usage:");
-            Console.WriteLine("Extraction: DOOMExtract.exe [pathToIndexFile] <destFolder>");
+            Console.WriteLine("Extraction: mono DOOMExtract.exe [pathToIndexFile] <destFolder>");
             Console.WriteLine("  If destFolder isn't specified a folder will be created next to the index/pindex file.");
             Console.WriteLine("  Files with fileType != \"file\" will have the fileType appended to the filename.");
             Console.WriteLine("  eg. allowoverlays.decl;renderParm for fileType \"renderParm\"");
             Console.WriteLine("  A list of each files ID will be written to [destFolder]\\fileIds.txt");
             Console.WriteLine();
-            Console.WriteLine("Repacking: DOOMExtract.exe [pathToIndexFile] --repack [repackFolder]");
+            Console.WriteLine("Repacking: mono DOOMExtract.exe [pathToIndexFile] --repack [repackFolder]");
             Console.WriteLine("  Will repack the resources with the files in the repack folder.");
             Console.WriteLine("  Files that don't already exist in the resources will be added.");
             Console.WriteLine("  To set a new files fileType append the fileType to its filename.");
@@ -28,14 +28,14 @@ namespace DOOMExtract
             Console.WriteLine("  (Note that you should only rebuild the latest patch index file,");
             Console.WriteLine("  as patches rely on the data in earlier files!)");
             Console.WriteLine();
-            Console.WriteLine("Patch creation: DOOMExtract.exe [pathToLatestPatchIndex] --createPatch [patchContentsFolder]");
+            Console.WriteLine("Patch creation: mono DOOMExtract.exe [pathToLatestPatchIndex] --createPatch [patchContentsFolder]");
             Console.WriteLine("  Allows you to create your own patch files.");
             Console.WriteLine("  Works like repacking above, but the resulting patch files will");
             Console.WriteLine("  only contain the files you've added/changed.");
             Console.WriteLine("  Make sure to point it to the highest-numbered .pindex file!");
             Console.WriteLine("  Once completed a new .patch/.pindex file pair should be created.");
             Console.WriteLine();
-            Console.WriteLine("Deleting files: DOOMExtract.exe [pathToIndexFile] --delete [file1] <file2> <file3> ...");
+            Console.WriteLine("Deleting files: mono DOOMExtract.exe [pathToIndexFile] --delete [file1] <file2> <file3> ...");
             Console.WriteLine("  Will delete files from the resources package. Full filepaths should be specified.");
             Console.WriteLine("  If a file isn't found in the package a warning will be given.");
             Console.WriteLine("  This should only be used on the latest patch file, as modifying");
@@ -43,7 +43,7 @@ namespace DOOMExtract
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("DOOMExtract 1.7 by infogram - https://github.com/emoose/DOOMExtract");
+            Console.WriteLine("DOOMExtractLinux by infogram and PowerBall253 - https://github.com/PowerBall253/DOOMExtractLinux");
             Console.WriteLine();
             if (args.Length <= 0)
             {
